@@ -12,27 +12,33 @@ if (isset($_POST["login"])) {
     $NIK = $_POST["NIK"];
     $Password = $_POST["Password"];
 
+
     $result = mysqli_query($conn, "SELECT * FROM user WHERE NIK ='$NIK'");
 
     if (mysqli_num_rows($result) === 1) {
         $row = mysqli_fetch_assoc($result);
+
         if (password_verify($Password, $row["Password"])) {
             //set session
-
             $_SESSION["login"] = true;
-            $_SESSION['id']    = $qry['id'];
+            $_SESSION['Nama'] = $row['Nama'];
+            $_SESSION['NIK'] = $row['NIK'];
+            $_SESSION['Email'] = $row['Email'];
+            $_SESSION['Level'] = $row['Level'];
+
+            if ($row['Level'] == "Admin") {
+                header("location: tes.php");
+                exit;
+                // cek jika user login sebagai pegawai
+            }
 
             header("location:Home.php");
             exit;
         }
     }
-
-
     $error = true;
 }
-
 ?>
-
 <!doctype html>
 <html lang="en">
 

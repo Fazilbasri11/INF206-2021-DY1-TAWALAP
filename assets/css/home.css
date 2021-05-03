@@ -168,12 +168,13 @@ a {
 }
 
 .card {
-  top: 40px;
+  top: 10px;
+  bottom: 10px;
   border: 1px solid #fff;
   border-radius: 2px;
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
   font-size: 2rem;
-  height: 200px;
+  height: 400px;
   overflow: hidden;
   position: relative;
   width: 40%;
@@ -190,7 +191,7 @@ a {
 
 .card__text {
   font-family: 'Inconsolata', monospace;
-  font-size: 25px;
+  font-size: 20px;
   color: #363a3f;
   margin-left: 30px;
   margin-top: 20px;

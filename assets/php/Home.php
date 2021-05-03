@@ -34,9 +34,9 @@ require 'functions.php';
             <span class="nav__logo-name">TAWALAP online</span>
         </div>
 
-        <div class="header__img">
+        <!-- <div class="header__img">
             <img src="../img/profile.png" alt="">
-        </div>
+        </div> -->
     </header>
 
     <div class="l-navbar" id="nav-bar">
@@ -85,21 +85,16 @@ require 'functions.php';
 
     <!-- isi home -->
 
-
-
     <div class="holder">
         <div class="card">
             <div class="card__text">
-                <?php
-                $tampilPeg    = mysqli_query($conn, "SELECT * FROM user WHERE id='$_SESSION[login]'");
-                $peg    = mysqli_fetch_array($tampilPeg);
-                ?>
-                <table border="0" cellpadding="4">
-                    <tr>
-                        <td><?= $peg['id'] ?>
-
-                    </tr>
-                </table>
+                <div class="header__img">
+                    <img src="../img/profile.png" alt="">
+                </div>
+                <h3>Nama : <?php echo  $_SESSION["Nama"] ?></h3>
+                <h3>NIK : <?php echo  $_SESSION["NIK"] ?></h3>
+                <h3>Email : <?php echo  $_SESSION["Email"] ?></h3>
+                <h3>Status : <?php echo  $_SESSION["Level"] ?></h3>
             </div>
         </div>
     </div>
