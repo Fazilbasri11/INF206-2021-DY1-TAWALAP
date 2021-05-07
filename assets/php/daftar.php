@@ -1,8 +1,5 @@
 <?php
-
-
 require 'functions.php';
-
 $conn = mysqli_connect("localhost", "root", "", "tawalap");
 if (isset($_POST["register"])) {
     if (registrasi($_POST) > 0) {

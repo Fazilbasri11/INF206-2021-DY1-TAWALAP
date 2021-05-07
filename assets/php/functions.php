@@ -29,7 +29,7 @@ function registrasi($data)
     $result = mysqli_query($conn, "SELECT NIK FROM user WHERE NIK='$NIK'");
     if (mysqli_fetch_assoc($result)) {
         echo "<script>
-        alert('NIK sudah terdaftar!')]
+        alert('NIK sudah terdaftar!')
         
             document.location.href='daftar.php';
         </script>";
