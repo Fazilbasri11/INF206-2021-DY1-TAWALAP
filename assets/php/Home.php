@@ -33,10 +33,6 @@ require 'functions.php';
             <i class='bx bx-menu' id="header-toggle"></i>
             <span class="nav__logo-name">TAWALAP online</span>
         </div>
-
-        <!-- <div class="header__img">
-            <img src="../img/profile.png" alt="">
-        </div> -->
     </header>
 
     <div class="l-navbar" id="nav-bar">
