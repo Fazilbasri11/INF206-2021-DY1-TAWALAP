@@ -52,6 +52,8 @@ if (isset($_POST["login"])) {
     <link rel="stylesheet" type="text/css" href="../css/login.css">
     <script src="https://kit.fontawesome.com/344a998c5f.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- Icon -->
+    <link rel="shortcut icon" href="../img/logo.jpg" />
     <title>Tawalap</title>
 </head>
 
