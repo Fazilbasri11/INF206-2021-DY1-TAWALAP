@@ -65,7 +65,7 @@
                     </div>
                 </div>
 
-                <a href="Logout.php" class="nav__link">
+                <a href="logout.php" class="nav__link">
                     <i class='bx bx-log-out nav__icon' ></i>
                     <span class="nav__name">Keluar</span>
                 </a>
