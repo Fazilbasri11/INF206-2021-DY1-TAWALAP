@@ -33,7 +33,7 @@ if (isset($_POST["register"])) {
 
 <body>
     <div class="container-md">
-        <div class="kembali"><a href="login.php"><i class="fas fa-times exit"></i></a></div>
+        <div class="kembali"><a href="index.php"><i class="fas fa-times exit"></i></a></div>
         <h3 class="text-center login" style="color:white">Register</h3>
         <hr style="color:rgb(37, 170, 225);">
         <form method="post" style="color: white;" action="">
@@ -45,7 +45,7 @@ if (isset($_POST["register"])) {
                     <div class="input-group-prepend">
                         <div class="input-group-text"><i class="fa-2x fas fa-id-card"></i></div>
                     </div>
-                    <input type="text" name="NIK" class="form-control" style="font-size: small" placeholder="Masukkan NIK Anda" required>
+                    <input type="text" name="NIKAkun" class="form-control" style="font-size: small" placeholder="Masukkan NIK Anda" required>
                 </div>
             </div>
 
@@ -55,7 +55,7 @@ if (isset($_POST["register"])) {
                     <div class="input-group-prepend">
                         <div class="input-group-text"><i class="fa-2x fas fa-user"></i></div>
                     </div>
-                    <input type="text" name="Nama" class="form-control" style="font-size: small" placeholder="Masukkan Nama Anda" required>
+                    <input type="text" name="NamaAkun" class="form-control" style="font-size: small" placeholder="Masukkan Nama Anda" required>
                 </div>
             </div>
 

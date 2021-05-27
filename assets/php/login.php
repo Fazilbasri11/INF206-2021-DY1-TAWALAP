@@ -9,25 +9,24 @@ require 'functions.php';
 $conn = mysqli_connect("localhost", "root", "", "tawalap");
 if (isset($_POST["login"])) {
 
-    $NIK = $_POST["NIK"];
+    $NIKAkun = $_POST["NIKAkun"];
     $Password = $_POST["Password"];
 
 
-    $result = mysqli_query($conn, "SELECT * FROM user WHERE NIK ='$NIK'");
-
+    $result = mysqli_query($conn, "SELECT a.*, b.Level from akun as a JOIN level as b ON b.id = a.id_level WHERE NIKAkun ='$NIKAkun'");
     if (mysqli_num_rows($result) === 1) {
         $row = mysqli_fetch_assoc($result);
 
         if (password_verify($Password, $row["Password"])) {
             //set session
             $_SESSION["login"] = true;
-            $_SESSION['Nama'] = $row['Nama'];
-            $_SESSION['NIK'] = $row['NIK'];
+            $_SESSION['NamaAkun'] = $row['NamaAkun'];
+            $_SESSION['NIKAkun'] = $row['NIKAkun'];
             $_SESSION['Email'] = $row['Email'];
             $_SESSION['Level'] = $row['Level'];
 
             if ($row['Level'] == "Admin") {
-                header("location: tes.php");
+                header("location: LaporanBaru.php");
                 exit;
                 // cek jika user login sebagai pegawai
             }
@@ -59,7 +58,7 @@ if (isset($_POST["login"])) {
 
 <body>
     <div class="container">
-        <!-- <div class="kembali"><a href="#"><i class="fas fa-times exit"></i></a></div> -->
+        <div class="kembali"><a href="index.php"><i class="fas fa-times exit"></i></a></div>
         <h3 class="text-center login" style="color:white" ;>Login Form</h3>
         <hr style="color:rgb(37, 170, 225);">
         <form style="color: white;" action="" method="post">
@@ -70,7 +69,7 @@ if (isset($_POST["login"])) {
                     <div class="input-group-prepend">
                         <div class="input-group-text"><i class="fa-2x fas fa-id-card"></i></div>
                     </div>
-                    <input type="text" name="NIK" class="form-control NIK" style="font-size: small" placeholder="Masukkan NIK Anda">
+                    <input type="text" name="NIKAkun" class="form-control NIK" style="font-size: small" placeholder="Masukkan NIK Anda">
                 </div>
             </div>
 
@@ -87,7 +86,7 @@ if (isset($_POST["login"])) {
                 <?php endif; ?>
             </div>
 
-            <div class="lupa"><a href="bantuan.php">Lupa Password?</a></div>
+            <div class="lupa"><a href="bantuan.php">Butuh Bantuan?</a></div>
             <div class="d-flex justify-content-center buttongra pt-0">
                 <button type="submit" name="login" class="btn btn-primary submit">Login</button>
             </div>

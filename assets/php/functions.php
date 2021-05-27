@@ -19,14 +19,14 @@ function registrasi($data)
 {
     global $conn;
 
-    $Nama = htmlspecialchars($data["Nama"]);
-    $NIK = htmlspecialchars($data["NIK"]);
+    $NamaAkun = htmlspecialchars($data["NamaAkun"]);
+    $NIKAkun = htmlspecialchars($data["NIKAkun"]);
     $Password = mysqli_real_escape_string($conn, $data["Password"]);
     $Password2 = mysqli_real_escape_string($conn, $data["Password2"]);
     $Email = htmlspecialchars($data["Email"]);
-    $Level = "Tamu";
+    $Level = 3;
 
-    $result = mysqli_query($conn, "SELECT NIK FROM user WHERE NIK='$NIK'");
+    $result = mysqli_query($conn, "SELECT NIKAkun FROM akun WHERE NIKAkun='$NIKAkun'");
     if (mysqli_fetch_assoc($result)) {
         echo "<script>
         alert('NIK sudah terdaftar!')
@@ -44,9 +44,9 @@ function registrasi($data)
     }
     $Password = password_hash($Password, PASSWORD_DEFAULT);
 
-    $query = "INSERT INTO user
+    $query = "INSERT INTO akun
                 VALUES
-                ('','$Nama','$NIK','$Password','$Email','$Level')
+                ('','$NamaAkun','$NIKAkun','$Password','$Email','$Level')
             ";
 
     mysqli_query($conn, $query);
