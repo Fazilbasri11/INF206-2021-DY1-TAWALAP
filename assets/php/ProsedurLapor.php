@@ -1,3 +1,16 @@
+<?php
+session_start();
+if (!isset($_SESSION["login"])) {
+    header("location: login.php");
+    exit;
+}
+
+include('koneksi.php');
+$nik = $_SESSION["NIKAkun"];
+$query = mysqli_query($koneksi, "SELECT * FROM tamu WHERE nik ='$nik'");
+$konfirmasi = mysqli_fetch_assoc($query);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
