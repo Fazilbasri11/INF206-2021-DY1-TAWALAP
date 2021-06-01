@@ -4,43 +4,12 @@ if (!isset($_SESSION["login"])) {
     header("location: login.php");
     exit;
 }
-include 'koneksi.php';
 
-$kondisi = "";
-if (isset($_POST['iya'])) {
-    $nik = $_GET['nik'];
-    mysqli_query($koneksi, "UPDATE tamu SET Konfirmasi = 'IYA' WHERE nik='$nik' ");
-    mysqli_query($koneksi, "UPDATE akun SET id_level = '2' WHERE NIKAkun='$nik' ");
-    $_SESSION["Level"] = "Terdaftar";
-    $kondisi = "berhasil";
-    header("location:LaporanBaru.php");
-} else if (isset($_POST['tidak'])) {
-    $nik = $_GET['nik'];
-    mysqli_query($koneksi, "UPDATE tamu SET Konfirmasi = 'GAGAL' WHERE nik='$nik' ");
-    mysqli_query($koneksi, "DELETE FROM tamu WHERE nik='$nik' ");
-    $kondisi = "gagal";
-    header("location:LaporanBaru.php");
-}
-
-//siapkan pesan kesalahan
+include('koneksi.php');
 $nik = $_SESSION["NIKAkun"];
 $query = mysqli_query($koneksi, "SELECT * FROM tamu WHERE nik ='$nik'");
 $konfirmasi = mysqli_fetch_assoc($query);
-
-$pesan = "";
-if ($konfirmasi != NULL) {
-    if ($konfirmasi['Konfirmasi'] == "IYA") {
-        $pesan = "Selamat Laporan Anda Telah Di Konfimasi";
-    } else if ($konfirmasi['Konfirmasi'] == "GAGAL") {
-        $pesan = "Mohon maaf laporan anda gagal dikonfirmasi";
-    } else if ($konfirmasi['Konfirmasi'] == "TIDAK") {
-        $pesan = "Mohon Tunggu Konfirmasi Admin";
-    }
-} else {
-    $pesan = "Anda Belum Membuat Laporan atau Laporan Anda Ditolak";
-}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,10 +26,13 @@ if ($konfirmasi != NULL) {
     <!-- ===== CSS ===== -->
     <link rel="stylesheet" href="../css/StyleProsedur.css">
 
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
     <!-- Icon -->
     <link rel="shortcut icon" href="../img/logo.jpg" />
 
-    <title>TAWALAP | Pesan</title>
+    <title>TAWALAP | Konfirmasi</title>
 </head>
 
 <body id="body-pd">
@@ -106,7 +78,7 @@ if ($konfirmasi != NULL) {
                         <span class="nav__name">Home</span>
                     </a>
 
-                    <a href="BuatLaporan.php" class="nav__link">
+                    <a href="BuatLaporan.php" class="nav__link active">
                         <i class='bx bx-user nav__icon'></i>
                         <span class="nav__name">Buat Laporan</span>
                     </a>
@@ -116,12 +88,12 @@ if ($konfirmasi != NULL) {
                         <span class="nav__name">Prosedur Lapor</span>
                     </a>
 
-                    <a href="Pesan.php" class="nav__link active">
+                    <a href="Pesan.php" class="nav__link">
                         <i class='bx bx-message-square-detail nav__icon'></i>
                         <span class="nav__name">Pesan</span>
                     </a>
 
-                    <a href="TentangApp1.php" class="nav__link">
+                    <a href="TentangApp1.html" class="nav__link">
                         <i class='bx bx-folder nav__icon'></i>
                         <span class="nav__name">Tentang App</span>
                     </a>
@@ -129,7 +101,7 @@ if ($konfirmasi != NULL) {
                 </div>
             </div>
 
-            <a href="logoutuser.php" class="nav__link">
+            <a href="logoutuser.php" class="nav__link ">
                 <i class='bx bx-log-out nav__icon'></i>
                 <span class="nav__name">Keluar</span>
             </a>
@@ -140,12 +112,14 @@ if ($konfirmasi != NULL) {
     <br>
     <div class="card text-center" style="border-color: white; border-width: 5px; border-radius: 12px;">
         <div class="card-header" style="background-color: #2e617e; border-color: white; border-width: 2px;">
-            <h2 style="color: white;">Pesan</h2>
+            <h2 style="color: white;">WARNING!!!</h2>
         </div>
         <div class="card-body" style="background-color: #5995b3;">
-            <h5 class="card-title" style="color: white;"><b><?php echo $pesan; ?></b></h5>
+            <h5 class="card-title" style="color: white;"><b>Mohon Maaf Ukuruan Foto / Tipe Foto Tidak Sesuai</b></h5>
+            <a class="btn btn-info" href="../php/BuatLaporan.php"><i class="fa fa-reply" aria-hidden="true"></i>&nbsp&nbspKembali</a>
         </div>
 
+    </div>
     </div>
 
     <!--===== MAIN JS =====-->
