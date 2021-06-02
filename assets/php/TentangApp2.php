@@ -4,11 +4,6 @@ if (!isset($_SESSION["login"])) {
     header("location: login.php");
     exit;
 }
-
-include('koneksi.php');
-$nik = $_SESSION["NIKAkun"];
-$query = mysqli_query($koneksi, "SELECT * FROM tamu WHERE nik ='$nik'");
-$konfirmasi = mysqli_fetch_assoc($query);
 ?>
 
 <!DOCTYPE html>
@@ -40,26 +35,6 @@ $konfirmasi = mysqli_fetch_assoc($query);
             <span class="nav__logo-name">TAWALAP online</span>
         </div>
 
-        <div class="header__img">
-            <?php
-            if ($konfirmasi != NULL) {
-                if ($konfirmasi['Konfirmasi'] == "IYA") {
-            ?>
-                    <img src="Foto_user.php?nik=<?php echo $konfirmasi['nik']; ?>" width="100" />
-                <?php
-                } else if ($konfirmasi['Konfirmasi'] == "TIDAK") {
-                ?>
-
-                    <img src="../img/profile.png" alt="">
-                <?php
-                }
-            } else {
-                ?>
-                <img src="../img/profile.png" alt="">
-            <?php
-            }
-            ?>
-        </div>
     </header>
 
     <div class="l-navbar" id="nav-bar">
@@ -71,27 +46,17 @@ $konfirmasi = mysqli_fetch_assoc($query);
                 </a>
 
                 <div class="nav__list">
-                    <a href="Home.php" class="nav__link">
-                        <i class='bx bx-grid-alt nav__icon'></i>
-                        <span class="nav__name">Home</span>
-                    </a>
-
-                    <a href="BuatLaporan.php" class="nav__link">
+                    <a href="LaporanBaru.php" class="nav__link">
                         <i class='bx bx-user nav__icon'></i>
-                        <span class="nav__name">Buat Laporan</span>
+                        <span class="nav__name">Laporan Baru</span>
                     </a>
 
-                    <a href="ProsedurLapor.php" class="nav__link">
-                        <i class='bx bx-bookmark nav__icon'></i>
-                        <span class="nav__name">Prosedur Lapor</span>
+                    <a href="LaporanDiterima.php" class="nav__link">
+                        <i class='bx bx-message-check nav__icon'></i>
+                        <span class="nav__name">Laporan Diterima</span>
                     </a>
 
-                    <a href="Pesan.php" class="nav__link">
-                        <i class='bx bx-message-square-detail nav__icon'></i>
-                        <span class="nav__name">Pesan</span>
-                    </a>
-
-                    <a href="TentangApp1.php" class="nav__link active">
+                    <a href="TentangApp2.php" class="nav__link active">
                         <i class='bx bx-folder nav__icon'></i>
                         <span class="nav__name">Tentang App</span>
                     </a>
@@ -99,7 +64,7 @@ $konfirmasi = mysqli_fetch_assoc($query);
                 </div>
             </div>
 
-            <a href="logoutuser.php" class="nav__link">
+            <a href="logoutadmin.php" class="nav__link">
                 <i class='bx bx-log-out nav__icon'></i>
                 <span class="nav__name">Keluar</span>
             </a>
