@@ -10,4 +10,3 @@ else
 {
     header('location:LaporanBaru.php');
 }
-?>

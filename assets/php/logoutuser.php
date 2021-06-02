@@ -1,14 +1,28 @@
 <?php
+if (isset($_POST['iya'])) {
+    session_start();
+    $_SESSION = [];
+    session_unset();
+    session_destroy();
+
+    header("Location: index.php");
+    exit;
+} else if (isset($_POST['tidak'])) {
+    header("location:Home.php");
+}
+
+
 session_start();
 if (!isset($_SESSION["login"])) {
     header("location: login.php");
     exit;
 }
-
 include('koneksi.php');
 $nik = $_SESSION["NIKAkun"];
 $query = mysqli_query($koneksi, "SELECT * FROM tamu WHERE nik ='$nik'");
 $konfirmasi = mysqli_fetch_assoc($query);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -25,12 +39,12 @@ $konfirmasi = mysqli_fetch_assoc($query);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
     <!-- ===== CSS ===== -->
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/StyleProsedur.css">
 
     <!-- Icon -->
     <link rel="shortcut icon" href="../img/logo.jpg" />
 
-    <title>TAWALAP | Tentang App</title>
+    <title>TAWALAP | Konfirmasi</title>
 </head>
 
 <body id="body-pd">
@@ -91,7 +105,7 @@ $konfirmasi = mysqli_fetch_assoc($query);
                         <span class="nav__name">Pesan</span>
                     </a>
 
-                    <a href="TentangApp1.php" class="nav__link active">
+                    <a href="TentangApp1.php" class="nav__link">
                         <i class='bx bx-folder nav__icon'></i>
                         <span class="nav__name">Tentang App</span>
                     </a>
@@ -99,29 +113,28 @@ $konfirmasi = mysqli_fetch_assoc($query);
                 </div>
             </div>
 
-            <a href="logoutuser.php" class="nav__link">
+            <a href="logoutuser.php" class="nav__link active">
                 <i class='bx bx-log-out nav__icon'></i>
                 <span class="nav__name">Keluar</span>
             </a>
         </nav>
     </div>
+    <br>
 
     <br>
-    <br>
-    <div class="card text-center" style="border-color: white; border-width: 5px; border-radius: 12px;">
-        <div class="card-header " style="background-color: #2e617e; border-color: white; border-width: 2px;">
-            <h2 style="color: white;">Tentang App</h2>
+    <h1 class="text-center" style="color:white;"><b>KELUAR</b></h1>
+    <div class="mt-3">
+        <div class="card-header text-black text-center mx-auto shadow-lg" style="width: 600px; background-color :#5995b3; border-radius: 15px 15px 0px 0px;">
         </div>
-        <div class="card-body" style="background-color: #5995b3;">
-            <h5 style="color: white;">Tawalap atau singkatan dari Tamu Wajib Lapor adalah sebuah website
-                yang dirancang untuk memudahkan warga yang datang ke desa dalam
-                melakukan pelaporan sebagai tamu secara online dalam waktu 1x24 jam.
-                Dengan adanya website ini, diharapkan pelaksanaan proses melapor sebagai
-                tamu di lingkungan desa menjadi lebih efektif dan efisien tanpa harus
-                mengunjungi rumah kepala desa atau kantor desa. Dengan demikian, tingkat
-                keamanan dan ketertiban desa diharapkan semakin meningkat.
-            </h5>
+        <div class="card-body text-black mx-auto shadow-lg" style="width: 600px; background-image: url('../img/bg.png'); background-size: cover ; border-radius:  0px 0px 15px 15px;">
+            <form action="logoutuser.php?>" method="post" enctype="multipart/form-data">
+                <div class="form-group text-center">
+                    <p class="card-text" style="color: black;"><b></b>Apakah Anda Yakin Ingin Keluar?</p>
+                    <button type="submit" class="btn btn-success mt-3 shadow-sm" name="iya">IYA</button>
+                    <button type="submit" class="btn btn-danger mt-3 shadow-sm" name="tidak">TIDAK</button>
+            </form>
         </div>
+    </div>
     </div>
 
     <!--===== MAIN JS =====-->
