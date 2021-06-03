@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #2e617e;
+}
+
+.container-md {
+    padding-top: 20px;
+}
+
+.exit {
+    padding-left: 95%;
+}
+
+
+.judul {
+    font-size: 14px;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.445), rgb(37, 170, 225, 0.75), rgba(0, 0, 0, 0.445));
+}
+
+button {
+    width: 49%;
+    margin-top: 4%;
+}
+
+.kembali {
+
+    padding-top: 5px;
+}
+
+.kembali a {
+    color: white;
+}
+
+.kembali a:hover {
+    color: #04befe;
+}
+
+
+.buttongra {
+    margin: 10%;
+    text-align: center;
+}
+
+.submit {
+    width: 600px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    height: 40px;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.submit:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.submit:focus {
+    outline: none;
+}
+
+.submit {
+    background-image: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed);
+    box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+}
+
+@media screen and (min-width:700px) {
+    .container-md {
+        padding-left: 40px;
+        padding-top: 20px;
+        padding-right: 40px;
+        max-width: 400px;
+        margin-top: 20px;
+        background: rgba(255, 255, 255, 0.089);
+        box-shadow: 0 8px 32px 0 rgba(26, 83, 101, 1);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border-radius: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.103);
+    }
+}
